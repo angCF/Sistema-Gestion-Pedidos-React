@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (url: string) => {
-  const [data, setData] = useState<any>(null);
+const useFetch = <T>(url: string) => {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -13,6 +13,7 @@ const useFetch = (url: string) => {
           throw new Error(`HTTP Error! status: ${response.status}`);
         }
         const result = await response.json();
+        console.log('Respuesta:', result);
         setData(result);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error consultando información');
