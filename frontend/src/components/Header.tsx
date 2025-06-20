@@ -4,7 +4,11 @@ import CrearProducto from "./products/CrearProducto";
 import EliminarProducto from "./products/EliminarProducto";
 import EditarProducto from "./products/EditarProducto";
 import ListaProductos from "./products/ListaProductos";
-import OrdenList2 from "./orders/OrdenList2";
+import ListaOrdenes from "./orders/ListaOrdenes";
+import EliminarOrden from "./orders/EliminarOrden";
+import CrearOrden from "./orders/CrearOrden";
+import VerOrden from "./orders/VerOrden";
+import EditarOrden from "./orders/EditarOrden";
 
 const Header = (props: { ruta?: string; }) => {
     return (
@@ -51,7 +55,19 @@ const Header = (props: { ruta?: string; }) => {
                     props.ruta === "eliminar-producto" ? <EliminarProducto /> : ""
                 }
                 {
-                    props.ruta === "ordenes" ? <OrdenList2 /> : ""
+                    props.ruta === "ordenes" ? <ListaOrdenes /> : ""
+                }
+                {
+                    props.ruta === "crear-orden" ? <CrearOrden /> : ""
+                }
+                {
+                    props.ruta === "ver-orden" ? <VerOrden /> : ""
+                }
+                {
+                    props.ruta === "editar-orden" ? <EditarOrden /> : ""
+                }
+                {
+                    props.ruta === "eliminar-orden" ? <EliminarOrden /> : ""
                 }
             </div>
         </Fragment>

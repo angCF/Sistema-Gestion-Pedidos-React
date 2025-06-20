@@ -12,7 +12,7 @@ const ListaProductos = () => {
             {loading && (
                 <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
                     <div className="spinner-border text-primary" role="status" style={{ width: '3rem', height: '3rem' }}>
-                    <span className="visually-hidden">Cargando...</span>
+                        <span className="visually-hidden">Cargando...</span>
                     </div>
                 </div>
             )}
@@ -35,13 +35,13 @@ const ListaProductos = () => {
                     <div className="table-title">
                         <div className="row">
                             <div className="col-xs-6">
-                            <h2 className="title-table">Lista de Productos</h2>
+                                <h2 className="title-table">Lista de Productos</h2>
                             </div>
                             <div className="col-xs-6">
-                            <Link to="/crear-producto" className="btn btn-success">
-                                <span className="material-symbols-outlined">add_circle</span>
-                                <span>Añadir Producto</span>
-                            </Link>
+                                <Link to="/crear-producto" className="btn btn-success">
+                                    <span className="material-symbols-outlined">add_circle</span>
+                                    <span>Añadir Producto</span>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -49,11 +49,11 @@ const ListaProductos = () => {
                         <caption>Lista de Productos</caption>
                         <thead>
                             <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Precio de venta</th>
-                            <th>Stock</th>
-                            <th id="table-action">Acciones</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio de venta</th>
+                                <th>Stock</th>
+                                <th id="table-action">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

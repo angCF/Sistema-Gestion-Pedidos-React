@@ -17,6 +17,7 @@ const App = () => {
 
           <Route path="/ordenes" element={<Header ruta="ordenes" />} />
           <Route path="/crear-orden" element={<Header ruta="crear-orden" />} />
+          <Route path="/ver-orden/:id" element={<Header ruta="ver-orden" />} />
           <Route path="/editar-orden/:id" element={<Header ruta="editar-orden" />} />
           <Route path="/eliminar-orden/:id" element={<Header ruta="eliminar-orden" />} />
 
