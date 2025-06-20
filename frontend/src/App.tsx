@@ -1,34 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-import logo from '/logo.png'
 import './App.css'
+import Header from './components/Header'
+import { HashRouter, Route, Routes } from 'react-router-dom'
+import NoFound from './utils/NoFound'
+import Principal from './components/Principal'
 
 const App = () => {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://unir.edu.co/" target="_blank">
-          <img src={logo} className="logo" alt="UNIR logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>UNIR + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the UNIR and React logos to learn more
-      </p>
+    <>      
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Principal />} />
+          <Route path="/productos" element={<Header ruta="productos" />} />
+          <Route path="/crear-producto" element={<Header ruta="crear-producto" />} />
+          <Route path="/editar-producto/:id" element={<Header ruta="editar-producto" />} />
+          <Route path="/eliminar-producto/:id" element={<Header ruta="eliminar-producto" />} />
+
+          <Route path="/ordenes" element={<Header ruta="ordenes" />} />
+          <Route path="/crear-orden" element={<Header ruta="crear-orden" />} />
+          <Route path="/editar-orden/:id" element={<Header ruta="editar-orden" />} />
+          <Route path="/eliminar-orden/:id" element={<Header ruta="eliminar-orden" />} />
+
+          <Route path="/noFound" element={<NoFound />} />
+        </Routes>
+      </HashRouter>
     </>
   )
 }
