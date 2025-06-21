@@ -11,6 +11,8 @@ En el repositorio de la API se encuentra incluida la carpeta `frontend`, lo que 
 
 No obstante, si se desea ejecutar el frontend de forma independiente, basta con comentar la sección correspondiente a `frontend` en el archivo `docker-compose.yml` **del repositorio de la API** y levantar manualmente este proyecto en el puerto `5173`. De esta manera, se mantendrá la comunicación esperada con la API sin inconvenientes.
 
+---
+
 ## Requisitos Previos
 - [Node.js](https://nodejs.org/) (versión recomendada: LTS)
 - npm (incluido con Node.js)
