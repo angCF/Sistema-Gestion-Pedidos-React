@@ -1,7 +1,7 @@
 # React + TypeScript + Vite
-Esta es la interfaz de usuario (UI) de un Sistema de Gestión de Pedidos, desarrollada con **React**, **TypeScript** y **Vite**.
+Esta es la implementación de la interfaz de usuario (UI) de un Sistema de Gestión de Pedidos, desarrollada con **React**, **TypeScript** y **Vite**.
 
-La API que ofrece la lógica de negocio esta aplicación se encuentra disponible en el siguiente repositorio:  
+La API que ofrece la lógica de negocio de esta aplicación se encuentra disponible en el siguiente repositorio:  
 [Repositorio de la API](https://github.com/angCF/Sistema-de-Gestion-de-Pedidos.git)
 ## Requisitos Previos
 - [Node.js](https://nodejs.org/) (versión recomendada: LTS)
