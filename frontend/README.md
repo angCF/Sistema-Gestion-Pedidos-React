@@ -1,8 +1,16 @@
 # React + TypeScript + Vite
+
 Esta es la implementación de la interfaz de usuario (UI) de un Sistema de Gestión de Pedidos, desarrollada con **React**, **TypeScript** y **Vite**.
 
 La API que ofrece la lógica de negocio de esta aplicación se encuentra disponible en el siguiente repositorio:  
 [Repositorio de la API](https://github.com/angCF/Sistema-de-Gestion-de-Pedidos.git)
+
+---
+
+En el repositorio de la API se encuentra incluida la carpeta `frontend`, lo que permite que con la orquestación de Docker se levante toda la aplicación de manera integral (backend y frontend).  
+
+No obstante, si se desea ejecutar el frontend de forma independiente, basta con comentar la sección correspondiente a `frontend` en el archivo `docker-compose.yml` y levantar manualmente este proyecto en el puerto `5173`. De esta manera, se mantendrá la comunicación esperada con la API sin inconvenientes.
+
 ## Requisitos Previos
 - [Node.js](https://nodejs.org/) (versión recomendada: LTS)
 - npm (incluido con Node.js)
