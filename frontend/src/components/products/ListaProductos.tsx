@@ -3,9 +3,38 @@ import useFetch from '../../hooks/useFetch';
 import type { Producto } from './producto';
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../utils/apiConfig';
+import Swal from 'sweetalert2';
+import ApiCliente from '../../utils/ApiCliente';
 
 const ListaProductos = () => {
-    const { data: listProducts, error, loading } = useFetch<Producto[]>(`${BASE_URL}/producto`, []);
+    const { data: listProducts, error, loading, refetch } = useFetch<Producto[]>(`${BASE_URL}/producto`);
+
+    const handleEliminar = async (id: number) => {
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Esta acción no se puede deshacer',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+
+        if (result.isConfirmed) {
+            try {
+            const response = await ApiCliente.delete(`/producto/${id}`);
+            if (response.status === 200 || response.status === 204) {
+                await Swal.fire("Eliminado", "Producto eliminado correctamente", "success");
+                refetch();
+            } else {
+                await Swal.fire("Error", "No se pudo eliminar el producto", "error");
+            }
+            } catch (error: any) {
+            await Swal.fire("Error", error.response?.data?.message || "Error desconocido", "error");
+            }
+        }
+    };
 
     return (
         <>
@@ -64,13 +93,17 @@ const ListaProductos = () => {
                                     <td>{producto.precioVenta}</td>
                                     <td>{producto.stock}</td>
                                     <td>
-                                        <Link to={`/editar-producto/${producto.id}`} className="edit" data-toggle="modal">
+                                        <Link to={`/editar-producto/${producto.id}`} className="icon-button">
                                             <span className="material-symbols-outlined">edit</span>
                                         </Link>
 
-                                        <Link to={`/eliminar-producto/${producto.id}`} className="delete" data-toggle="modal">
+                                        <button
+                                            type="button"
+                                            className="icon-button"
+                                            onClick={() => handleEliminar(producto.id)}
+                                        >
                                             <span className="material-symbols-outlined">delete</span>
-                                        </Link>
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
@@ -83,3 +116,4 @@ const ListaProductos = () => {
 };
 
 export default ListaProductos;
+                                        

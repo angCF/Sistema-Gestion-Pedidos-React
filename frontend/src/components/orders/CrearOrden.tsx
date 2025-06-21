@@ -1,6 +1,5 @@
 import { useState } from "react";
 import './styles/crearOrden.css';
-import ListaOrdenes from "./ListaOrdenes";
 import ApiClient from '../../utils/ApiCliente';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ const CrearOrden = () => {
     const [itemsOrden, setItemsOrden] = useState<OrdenItem[]>([]);
     const [nuevoItem, setNuevoItem] = useState<OrdenItem>({} as OrdenItem);
     const [erroresForm, setErroresForm] = useState<string[]>([]);
-    const { data: listaProductos } = useFetch<Producto[]>(`${BASE_URL}/producto`, []);
+    const { data: listaProductos } = useFetch<Producto[]>(`${BASE_URL}/producto`);
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -85,7 +84,6 @@ const CrearOrden = () => {
 
     return (
         <>
-            <ListaOrdenes />
             <div className="modal-backdrop">
                 <div className="modal-content-custom">
                     <div className="modal-header">

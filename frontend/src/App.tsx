@@ -13,13 +13,11 @@ const App = () => {
           <Route path="/productos" element={<Header ruta="productos" />} />
           <Route path="/crear-producto" element={<Header ruta="crear-producto" />} />
           <Route path="/editar-producto/:id" element={<Header ruta="editar-producto" />} />
-          <Route path="/eliminar-producto/:id" element={<Header ruta="eliminar-producto" />} />
 
           <Route path="/ordenes" element={<Header ruta="ordenes" />} />
           <Route path="/crear-orden" element={<Header ruta="crear-orden" />} />
           <Route path="/ver-orden/:id" element={<Header ruta="ver-orden" />} />
           <Route path="/editar-orden/:id" element={<Header ruta="editar-orden" />} />
-          <Route path="/eliminar-orden/:id" element={<Header ruta="eliminar-orden" />} />
 
           <Route path="/noFound" element={<NoFound />} />
         </Routes>

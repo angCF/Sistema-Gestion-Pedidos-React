@@ -3,7 +3,6 @@ import type { Orden, OrdenItem } from "./orden";
 import ApiClient from '../../utils/ApiCliente';
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../utils/apiConfig";
-import ListaOrdenes from "./ListaOrdenes";
 import Swal from "sweetalert2";
 import useFetch from "../../hooks/useFetch";
 import type { Producto } from "../products/producto";
@@ -11,9 +10,9 @@ import type { Producto } from "../products/producto";
 const EditarOrden = () => {
     const { id } = useParams();
     const [orden, setOrden] = useState<Orden>({} as Orden);
-    const { data: listaProductos } = useFetch<Producto[]>(`${BASE_URL}/producto`, []);;
+    const { data: listaProductos } = useFetch<Producto[]>(`${BASE_URL}/producto`);;
     const [nuevoItem, setNuevoItem] = useState<OrdenItem>({} as OrdenItem);
-    const { data: ordenActual, loading, error } = useFetch<Orden>(`${BASE_URL}/orden/${id}`, {} as Orden);
+    const { data: ordenActual, loading, error } = useFetch<Orden>(`${BASE_URL}/orden/${id}`);
     const [erroresForm, setErroresForm] = useState<string[]>([]);
 
     const navigate = useNavigate();
@@ -98,7 +97,6 @@ const EditarOrden = () => {
 
     return (
         <>
-            <ListaOrdenes />
             <div className="modal-backdrop">
                 <div className="modal-content-custom">
                     <div className="modal-header">

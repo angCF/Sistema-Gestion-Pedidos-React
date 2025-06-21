@@ -3,9 +3,38 @@ import '../../styles/orderList.css';
 import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../utils/apiConfig';
 import type { Orden } from './orden';
+import Swal from 'sweetalert2';
+import ApiCliente from '../../utils/ApiCliente';
 
 const ListaOrdenes = () => {
-  const { data: listOrdenes, loading, error } = useFetch<Orden[]>(`${BASE_URL}/orden`, []);
+  const { data: listOrdenes, error, loading, refetch } = useFetch<Orden[]>(`${BASE_URL}/orden`);
+
+  const handleEliminar = async (id: number) => {
+      const result = await Swal.fire({
+          title: '¿Estás seguro?',
+          text: 'Esta acción no se puede deshacer',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+
+      if (result.isConfirmed) {
+          try {
+          const response = await ApiCliente.delete(`/orden/${id}`);
+          if (response.status === 200 || response.status === 204) {
+              await Swal.fire("Eliminado", "Orden eliminada correctamente", "success");
+              refetch();
+          } else {
+              await Swal.fire("Error", "No se pudo eliminar la orden", "error");
+          }
+          } catch (error: any) {
+          await Swal.fire("Error", error.response?.data?.message || "Error desconocido", "error");
+          }
+      }
+  };
 
   return (
     <>
@@ -64,17 +93,21 @@ const ListaOrdenes = () => {
                   <td>{orden.precioCompra}</td>
                   <td>{new Date(orden.fechaCompra).toLocaleDateString()}</td>
                   <td>
-                    <Link to={`/ver-orden/${orden.id}`} className="edit" data-toggle="modal">
+                    <Link to={`/ver-orden/${orden.id}`} className="icon-button">
                       <span className="material-symbols-outlined">visibility</span>
                     </Link>
 
-                    <Link to={`/editar-orden/${orden.id}`} className="edit" data-toggle="modal">
+                    <Link to={`/editar-orden/${orden.id}`} className="icon-button">
                       <span className="material-symbols-outlined">edit</span>
                     </Link>
 
-                    <Link to={`/eliminar-orden/${orden.id}`} className="delete" data-toggle="modal">
+                    <button
+                      type="button"
+                      className="icon-button"
+                      onClick={() => handleEliminar(orden.id)}
+                    >
                       <span className="material-symbols-outlined">delete</span>
-                    </Link>
+                    </button>
 
                   </td>
                 </tr>

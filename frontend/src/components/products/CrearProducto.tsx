@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ApiClient from '../../utils/ApiCliente';
 import Swal from 'sweetalert2';
-import ProductList from './ListaProductos';
 
 const CrearProducto = () => {
   const [nombre, setNombre] = useState("");
@@ -37,7 +36,6 @@ const CrearProducto = () => {
 
   return (
     <>
-      <ProductList/>
       <div className="modal-backdrop">
         <div className="modal-content-custom">
           <div className="modal-header">

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ApiClient from '../../utils/ApiCliente';
 import Swal from 'sweetalert2';
-import ProductList from './ListaProductos';
 
 const EditarProducto = () => {
   const [nombre, setNombre] = useState("");
@@ -55,7 +54,6 @@ const EditarProducto = () => {
 
   return (
     <>
-      <ProductList />
       <div className="modal-backdrop">
         <div className="modal-content-custom">
           <div className="modal-header">

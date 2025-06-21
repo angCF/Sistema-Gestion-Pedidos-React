@@ -1,40 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from 'react';
+import ApiCliente from '../utils/ApiCliente';
 
 export type UseFetchResult<T> = {
   data: T;
   error: string | null;
   loading: boolean;
+  refetch: any;
 };
 
-const useFetch = <T>(url: string, initialData: T): UseFetchResult<T> => {
-  const [data, setData] = useState<T>(initialData);
+const useFetch = <T>(url: string): UseFetchResult<T> => {
+  const [data, setData] = useState<T>([] as T);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        setData(initialData); // limpia datos previos para evitar estados inconsistentes
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP Error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setData(result);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error consultando información');
-        setData(initialData);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await ApiCliente.get(url);
+      setData(response.data);
+      setError(null);
+    } catch (err: any) {
+      setError(err.message || 'Error al cargar los datos');
+    } finally {
+      setLoading(false);
+    }
   }, [url]);
 
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
-  return { data, error, loading };
+  return { data, loading, error, refetch: fetchData }; // 👈 aquí el refetch
 };
 
 export default useFetch;

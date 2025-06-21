@@ -2,12 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { BASE_URL } from "../../utils/apiConfig";
 import type { Orden } from "./orden";
-import ListaOrdenes from "./ListaOrdenes";
 import Swal from "sweetalert2";
 
 const VerOrden = () => {
     const { id } = useParams();
-    const { data: ordenVer, loading, error } = useFetch<Orden>(`${BASE_URL}/orden/${id}`, {} as Orden);
+    const { data: ordenVer, loading, error } = useFetch<Orden>(`${BASE_URL}/orden/${id}`);
     const navigate = useNavigate();
 
     if (error) {
@@ -22,7 +21,6 @@ const VerOrden = () => {
     const handleClose = () => navigate("/ordenes");
     return (
         <>
-            <ListaOrdenes />
             <div className="modal-backdrop">
                 <div className="modal-content-custom">
                     <div className="modal-header">
