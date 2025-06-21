@@ -24,33 +24,33 @@ const VerOrden = () => {
             <div className="modal-backdrop">
                 <div className="modal-content-custom">
                     <div className="modal-header">
-                        <h4 className="modal-title w-100 text-center">Ver Orden #{ordenVer.id}</h4>
+                        <h4 className="modal-title w-100 text-center fw-bold">Ver Orden #{ordenVer.id}</h4>
                         <button type="button" className="btn-close" onClick={handleClose}></button>
                     </div>
                     <div className="modal-body-scrollable">
-                        <h5 className="mb-3 text-dark text-start">Datos del Cliente:</h5>
+                        <h5 className="mb-3 fw-bold text-start">Datos del Cliente:</h5>
                         <div className="row mb-2">
                             <div className="col-6">
-                                <strong>Cliente:</strong>
+                                <span className="fw-bold text-start">Cliente:</span>
                                 <span className="text-muted"> {ordenVer.nombreComprador}</span>
                             </div>
                             <div className="col-6">
-                                <strong>Documento:</strong>
+                                <span className="fw-bold text-start">Documento:</span>
                                 <span className="text-muted"> {ordenVer.numDocumentoComprador}</span>
                             </div>
                         </div>
                         <div className="row mb-2">
                             <div className="col-6">
-                                <strong>Precio total:</strong>
+                                <span className="fw-bold text-start">Precio total:</span>
                                 <span className="text-muted"> ${ordenVer.precioCompra.toFixed(2)}</span>
                             </div>
                             <div className="col-6">
-                                <strong>Fecha:</strong>
+                                <span className="fw-bold text-start">Fecha:</span>
                                 <span className="text-muted"> {new Date(ordenVer.fechaCompra).toLocaleDateString()}</span>
                             </div>
                         </div>
 
-                        <h5 className="mt-4 text-dark text-start">Productos incluidos:</h5>
+                        <h5 className="mt-4 fw-bold text-start">Productos incluidos:</h5>
                         <ul className="list-group">
                             {ordenVer.itemsOrden.map((item: any, i: number) => (
                                 <li key={i} className="list-group-item d-flex justify-content-between align-items-center">

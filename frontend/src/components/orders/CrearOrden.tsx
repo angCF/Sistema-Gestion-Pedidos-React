@@ -98,9 +98,11 @@ const CrearOrden = () => {
                             </div>
                             <div className="mb-3">
                                 <label className="form-label">Numero Documento Cliente</label>
-                                <textarea className="form-control" rows={3} value={numDocumentoComprador} onChange={(e) => setNumDocumentoComprador(e.target.value)} />
+                                <input type="text" className="form-control" value={numDocumentoComprador} onChange={(e) => setNumDocumentoComprador(e.target.value)} />
                             </div>
-
+                            {itemsOrden.length > 0 && (
+                                <h6 className="mt-4 text-dark text-start">Productos incluidos</h6>
+                            )}
                             <ul className="list-group mb-3">
                                 {itemsOrden.map((item, index) => (
                                     <li key={index} className="list-group-item d-flex justify-content-between">

@@ -56,6 +56,10 @@ const ListaOrdenes = () => {
       {!loading && !error && listOrdenes.length === 0 && (
         <div className="text-center">
           <h2>No hay órdenes disponibles</h2>
+          <Link to="/crear-orden" className="btn btn-success">
+            <span className="material-symbols-outlined">add_circle</span>
+            <span>Añadir Orden</span>
+          </Link>
         </div>
       )}
 
@@ -116,7 +120,6 @@ const ListaOrdenes = () => {
           </table>
         </div>
       )}
-
     </>
   );
 };
