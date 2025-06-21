@@ -13,6 +13,10 @@
   margin: 5px;
 }
 
+.table-responsive {
+  scrollbar-width: none;
+}
+
 .table-title {
   padding-bottom: 15px;
   color: #000000;

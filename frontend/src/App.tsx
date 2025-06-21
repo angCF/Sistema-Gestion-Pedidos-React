@@ -1,15 +1,14 @@
 import './App.css'
 import Header from './components/Header'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
 import NoFound from './utils/NoFound'
-import Principal from './components/Principal'
 
 const App = () => {
   return (
     <>      
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Principal />} />
+          <Route path="/" element={<Navigate to="/productos" />} />
           <Route path="/productos" element={<Header ruta="productos" />} />
           <Route path="/crear-producto" element={<Header ruta="crear-producto" />} />
           <Route path="/editar-producto/:id" element={<Header ruta="editar-producto" />} />
