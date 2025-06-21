@@ -23,15 +23,15 @@ const ListaProductos = () => {
 
         if (result.isConfirmed) {
             try {
-            const response = await ApiCliente.delete(`/producto/${id}`);
-            if (response.status === 200 || response.status === 204) {
-                await Swal.fire("Eliminado", "Producto eliminado correctamente", "success");
-                refetch();
-            } else {
-                await Swal.fire("Error", "No se pudo eliminar el producto", "error");
-            }
+                const response = await ApiCliente.delete(`/producto/${id}`);
+                if (response.status === 200 || response.status === 204) {
+                    await Swal.fire("Eliminado", "Producto eliminado correctamente", "success");
+                    refetch();
+                } else {
+                    await Swal.fire("Error", "No se pudo eliminar el producto", "error");
+                }
             } catch (error: any) {
-            await Swal.fire("Error", error.response?.data?.message || "Error desconocido", "error");
+                await Swal.fire("Error", error.response?.data?.message || "Error desconocido", "error");
             }
         }
     };
@@ -56,6 +56,10 @@ const ListaProductos = () => {
             {!loading && !error && listProducts.length === 0 && (
                 <div className="text-center">
                     <h2>No hay productos disponibles</h2>
+                    <Link to="/crear-producto" className="btn btn-success">
+                        <span className="material-symbols-outlined">add_circle</span>
+                        <span>Añadir Producto</span>
+                    </Link>
                 </div>
             )}
 
@@ -116,4 +120,3 @@ const ListaProductos = () => {
 };
 
 export default ListaProductos;
-                                        

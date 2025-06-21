@@ -30,7 +30,7 @@ const useFetch = <T>(url: string): UseFetchResult<T> => {
     fetchData();
   }, [fetchData]);
 
-  return { data, loading, error, refetch: fetchData }; // 👈 aquí el refetch
+  return { data, loading, error, refetch: fetchData };
 };
 
 export default useFetch;

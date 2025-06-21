@@ -60,6 +60,10 @@ const CrearOrden = () => {
                 Swal.fire("Error", "No se pudo guardar la orden", "error");
             }
         } catch (error: any) {
+            console.log(error)
+            if(error.status === 409){
+                setItemsOrden([]);
+            }
             Swal.fire("Error", error.response?.data?.message || "Error desconocido", "error");
         }
     };

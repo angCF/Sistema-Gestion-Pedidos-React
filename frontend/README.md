@@ -30,3 +30,11 @@ Esto abrirá la aplicación en http://localhost:5173 (puede variar según tu con
 ```
 npm run build
 ```
+## Despliegue en Docker
+La aplicación también se puede desplegar en Docker usando los siguientes comandos:
+```console
+docker build . -t "react-project"
+```
+```console
+docker run -p 5173:5173 react-project
+```
